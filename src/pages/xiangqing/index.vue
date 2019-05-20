@@ -1,16 +1,17 @@
 <template>
 <div >
         <view v-if="!sd_sd">
-<lunbo></lunbo>
+           
+<lunbo :lb_data="form.spt"></lunbo>
     
    
     
     
      <view class="bgff">
     <view class="pd pt10 pm10">
-        <view class="pt10">
+        <view class="pt10"> 
               <view class="fl mui-col-xs-9 fz26 red pt10">
-                    ￥ <text class=" fz40">236.00</text>
+                    ￥ <text class=" fz40">{{form.jiage}}</text>
                 </view>
                 <view class="mui-col-xs-3 tr box cen">
                             <view class="box_a tr">
@@ -19,23 +20,25 @@
                                 </view>
                                     <view class="fz24 z6">收藏</view>
                             </view>
-                     <view class="box_a tr">
+                     <view class="box_a tr pr">
+                         <button class="ssd_deeert" open-type="share"></button>
                                     <view class="sd_ddfe">
                                     <i class="dx iconfenxiang fz40 z6 cz"></i>
                                 </view>
                                     <view class="fz24 z6">分享</view>
+                             
                             </view>
                 </view>
             
             <view class="qc"></view>
         </view>
         
-            <view class="fz32 z3">	安茹蚕丝蛋白紧致眼霜/15g</view>
+            <view class="fz32 z3 mt10">	{{form.name}}</view>
     </view>
     
         <view class="pd sd_sddfg box cen fz22 z6 mt10">
                 <view class="box_a tl">
-     快递:包邮
+     快递:{{form.yunfei==0?'包邮':form.yunfei}}
                 </view>
                <view class="box_a">
  总销59769笔
@@ -94,12 +97,11 @@
         </view>
     </view>
     
-    
-    <section class="dsf_jg_ertxc " v-if="sd_sd">
-        <p>
-        <img src="http://images.cangniaowl.com/images/230/20180921/3c4dd12122ee64ad8f83119e632f72ef.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_01.jpg" mode="widthFix"></p>
-        
-        <p><img src="http://images.cangniaowl.com/images/230/20180921/120976faf48b1463132bdcff9430643a.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_02.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/4d6398360fcb1903799c11d3305242cc.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_03.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/021eb7a25e42bef17f07fb88d0e24a7c.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_04.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/65d758750110fa173a34a852a5c7a7bb.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_05.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/b8c755b30eb17d1dd382fc7a11a5eed0.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_06.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/ad9cba2ff07e50b809acb0d9c110cd30.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_07.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/3b7b5e3320b5fcb4af0fc9140957d799.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_08.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/e6d01a3289d42e6489b9c9aa484c3d77.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_09.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/1616db1312cae3a30a989d3bdeef100e.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_10.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20180921/8e483c5b87fe010c83c3d5bd8becbf22.jpg?imageView2/1/w/0/h/0/interlace/0/q/100" title="蚕丝紧致眼霜_11.jpg" mode="widthFix" ></p><p><img src="http://images.cangniaowl.com/images/230/20190104/6d0b686e886573acbc239605b33e4095.jpg?imageView2/1/w/0/h/0/interlace/0/q/100"  mode="widthFix" title="售后快递物流1.jpg" alt="售后快递物流1.jpg"></p><p><br></p></section>
+
+    <section class="dsf_jg_ertxc " v-if="sd_sd" v-html="form.xiqngqing">
+      
+   
+    </section>
     
     
     
@@ -111,7 +113,10 @@
     export default {
         data() {
             return {
-                sd_sd: false
+                sd_sd: false,
+                form: {
+
+                }
             }
         },
         components: {
@@ -126,7 +131,34 @@
             this.sd_sd = true
         },
         methods: {
+            async getdate() {
 
+                var sd_der = await this.wxpost("shopp/sp_list", {
+                    id: 2,
+                    type: 3
+                }, true)
+                sd_der.spt = sd_der.spt.split(",")
+
+
+                this.sd_drtyx = JSON.parse(sd_der.sd_drtyx) || []
+
+                this.sku = JSON.parse(sd_der.sku) || []
+
+                this.form = sd_der
+
+                console.log(this.form);
+            },
+        },
+        onReady: function() {
+            this.getdate()
+        },
+
+        onShareAppMessage: function() {
+            return {
+                title: this.form.name,
+                desc: this.form.fxms,
+                path: '/pages/xiangqing?id=2'
+            }
         },
         mounted() {
 
@@ -134,7 +166,22 @@
     }
 
 </script>
+<style>
+    .dsf_jg_ertxc img {
+        width: 100%
+    }
+     .ssd_deeert{
+        position: absolute;
+         left: 0px;
+         top: 0px;
+         width: 100%;
+         height: 100%;
+         opacity: 0
+    }
+
+</style>
 <style scoped>
+   
     .sd_ddfe {
         height: 46rpx;
         line-height: 46rpx;
@@ -187,10 +234,6 @@
     .xq_gif {
         width: 28rpx;
         height: 20rpx;
-    }
-
-    .dsf_jg_ertxc img {
-        width: 100%
     }
 
 </style>

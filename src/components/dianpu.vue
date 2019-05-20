@@ -34,11 +34,11 @@
         methods: {
 
         },
-     
+
         mounted() {
-         
-       
-    },
+
+
+        },
     }
 
 </script>
