@@ -1,4 +1,4 @@
-var url_d = "http://192.168.1.102:8360/"
+var url_d = "https://duxinggj.com/"
 import axios from "axios"
 var CryptoJS = require("crypto-js");
 var key = "duxinggongchengguoqingguangzoulg"

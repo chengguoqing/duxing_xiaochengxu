@@ -1,6 +1,6 @@
 <template>
-<div >
-        <view v-if="!sd_sd">
+<div class="dfd_dert">
+        <view  >
            
 <lunbo :lb_data="form.spt"></lunbo>
     
@@ -91,29 +91,32 @@
         </view>
         <view class="mt20">   <dianpu></dianpu></view>
     
-        <view class="bgff cen pt20 pm20 mt20 fz26 z9">
-    <img src="http://mall.cangniaowl.com/static/img/xq_gif.gif" class="xq_gif cz">      上拉查看图文详情
-        
-        </view>
     </view>
     
-
-    <section class="dsf_jg_ertxc " v-if="sd_sd" v-html="form.xiqngqing">
+        <view class="bgff mt20">
+                <view class="pl20 fz28 df_jkj_dert pr10">
+                        <view class="z3 pingjisdrt">
+                            商品详情
+                        </view>
+    </view>
+    <section class="dsf_jg_ertxc "  v-html="form.xiqngqing">
       
    
     </section>
+    </view>
     
-    
+    <xq_bottom></xq_bottom>
     
 </div>
 </template>
 <script>
     import lunbo from "@/components/lunbo"
     import dianpu from "@/components/dianpu"
+    import xq_bottom from "@/components/xiangqing/bottom"
     export default {
         data() {
             return {
-                sd_sd: false,
+
                 form: {
 
                 }
@@ -121,32 +124,19 @@
         },
         components: {
             lunbo,
-            dianpu
-        },
-        onPullDownRefresh() {
-            this.sd_sd = false
-            wx.stopPullDownRefresh()
-        },
-        onReachBottom() {
-            this.sd_sd = true
+            dianpu,
+            xq_bottom
         },
         methods: {
             async getdate() {
-
                 var sd_der = await this.wxpost("shopp/sp_list", {
                     id: 2,
                     type: 3
                 }, true)
                 sd_der.spt = sd_der.spt.split(",")
-
-
                 this.sd_drtyx = JSON.parse(sd_der.sd_drtyx) || []
-
                 this.sku = JSON.parse(sd_der.sku) || []
-
                 this.form = sd_der
-
-                console.log(this.form);
             },
         },
         onReady: function() {
@@ -170,18 +160,18 @@
     .dsf_jg_ertxc img {
         width: 100%
     }
-     .ssd_deeert{
+
+    .ssd_deeert {
         position: absolute;
-         left: 0px;
-         top: 0px;
-         width: 100%;
-         height: 100%;
-         opacity: 0
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0
     }
 
 </style>
 <style scoped>
-   
     .sd_ddfe {
         height: 46rpx;
         line-height: 46rpx;
@@ -234,6 +224,10 @@
     .xq_gif {
         width: 28rpx;
         height: 20rpx;
+    }
+
+    .dfd_dert {
+        padding-bottom: 100rpx
     }
 
 </style>

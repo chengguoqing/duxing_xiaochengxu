@@ -1,6 +1,13 @@
 {
     "pages": [
-    "pages/xiangqing/main",
+           "pages/xiangqing/main",
+             "pages/order_formqueren/main",
+         "pages/adddz/main",
+        
+      
+
+
+
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"

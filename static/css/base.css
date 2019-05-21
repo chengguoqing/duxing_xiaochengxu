@@ -16,11 +16,6 @@ input {
   font-family: "SimSun";
 }
 
-.dsf_dsdfg {
-  width: 13px;
-  height: 21px;
-  background-position: -22px -305px;
-}
 .kx{
   vertical-align: bottom
 }
@@ -307,13 +302,6 @@ body, html {
   margin: auto;
 }
 
-.xz_po_a a {
-  color: #575757;
-}
-
-.page input[type="button"] {
-  min-height: 38px;
-}
 
 .yj4 {
   border-radius: 4px;
@@ -573,7 +561,7 @@ em {
 }
 
 .bgred {
-  background: #cc0001;
+  background: #f44336;
   color: #fff;
 }
 
@@ -972,59 +960,7 @@ a:hover {
   color: #999 !important;
 }
 
-/* 表单 */
 
-.sdlj_sdf {
-  width: 170rpx;
-}
-
-.sf_s_sdfgx {
-  line-height: 100rpx;
-}
-
-.sf_s_sdfgx input {
-  line-height: 100rpx;
-  height: 100rpx;
-}
-
-.yanzs_sd {
-  padding: 18rpx 30rpx !important;
-  position: absolute;
-  right: 0px;
-  top: 15rpx;
-  height: auto;
-  line-height: 1;
-  color: #047dee;
-  font-size: 30rpx;
-}
-
-.right_sdfgx {
-  width: 19rpx;
-  height: 33rpx;
-  position: absolute;
-  right: 20rpx;
-  top: 38rpx;
-}
-
-.cls_2 {
-  width: 50%;
-  float: left;
-}
-
-.cls_3 {
-  width: 33.3%;
-  float: left;
-}
-
-.cls_4 {
-  width: 25%;
-  float: left;
-}
-
-.cls_5 {
-  width: 20%;
-  float: left;
-}
 
 .cz_w {
   display: table !important;
@@ -1098,4 +1034,38 @@ a:hover {
 
 .mui-col-xs-1 {
   width: 8.33333333%;
+}
+.dx_title{
+    line-height: 80rpx;
+    color: #666;
+    font-size: 30rpx;
+}
+.dx_row:after{
+    content: " ";
+      clear: both;
+}
+.khj_drert{
+    color: #51C332
+}
+.dfs_derty{
+    background: #f8f8f8
+}
+.dsfd_df_drt{
+    position: absolute;
+    right: 20rpx;
+    top: 6rpx;
+}
+
+  .df_drrtx {
+        width: 120rpx;
+        float: left;
+        line-height: 74rpx;
+    }
+    .fd_dert {
+        padding-top: 13rpx;
+    }
+.fd_dert input{
+    height: 60rpx !important;
+    position: relative;
+    bottom: 5rpx;
 }

@@ -1,10 +1,10 @@
 <!--店铺-->
 <template>
   <view class="bgff pd pt20 pm20">
-            <img src="http://web.cangniaowl.com/images/0/20171218/f1499b58578f847449adc790c72c2a1e_thumb_640_640.jpg" class="dianpo_dsdrt">
+            <img :src="info.logo" class="dianpo_dsdrt">
           <view class="ov pl20">
-                        <view class="fz28 z3 fg_deertt">安茹官方旗舰店</view>
-                  <view class="box cen">
+                        <view class="fz28 z3 fg_deertt">{{info.name}}</view>
+                  <view class="box cen mt10">
                     <view class="box_a">
                                 <view class="red fz28">5.00</view>
                             <view class="fz24  z9">综合评分</view>
@@ -19,24 +19,32 @@
                 </view>
             </view>
           <view class="qc"></view>
-        </view>
+        </view> 
 </template>
 <script>
     export default {
         data() {
             return {
-
+                info: ''
             }
         },
         components: {
 
         },
         methods: {
+            async info_er() {
+                console.log(333);
+                this.info = await this.wxpost("shopp/info", {
 
+                    type: 3,
+                    id: 1
+                }, true)
+                console.log(this.info);
+            }
         },
 
         mounted() {
-
+            this.info_er()
 
         },
     }
@@ -44,8 +52,8 @@
 </script>
 <style scoped>
     .dianpo_dsdrt {
-        width: 104rpx;
-        height: 104rpx;
+        width: 110rpx;
+        height: 110rpx;
         float: left
     }
 
@@ -63,7 +71,6 @@
 
     .fg_deertt {
         position: relative;
-        top: -5rpx;
     }
 
 </style>
