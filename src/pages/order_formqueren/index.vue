@@ -120,7 +120,7 @@
         </section>
         
         <section class="sd_jh_drtt">
-                <section class="tjiao_ert cf cen fz30">
+                <section class="tjiao_ert cf cen fz30" @click="goumai">
                 提交订单
             </section>
             <section class="ov pr20 tr fz28">
@@ -143,7 +143,24 @@
             jiajian
         },
         methods: {
+            async goumai() {
+                let openid = wx.getStorageSync('openid')
+                let qianming = {}
+                qianming.jiner = 1
+                qianming.openid = openid
+                var sd_der = await this.wxpost("comm/qianming", qianming)
+                sd_der = JSON.parse(sd_der)
+                wx.requestPayment(sd_der)
+                sd_der.success = function() {
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 2000
+                    })
+                }
+                console.log(sd_der);
 
+            }
         },
         mounted() {
 
@@ -191,7 +208,8 @@
     .fd_dert {
         padding-top: 13rpx;
     }
-    .sd_jh_drtt{
+
+    .sd_jh_drtt {
         position: fixed;
         left: 0px;
         bottom: 0px;
@@ -200,21 +218,26 @@
         height: 100rpx;
         background: #fff
     }
-    .tjiao_ert{
+
+    .tjiao_ert {
         width: 190rpx;
         height: 100rpx;
         float: right;
         background: #f94f4f;
     }
-    .sd_jhj_top{
+
+    .sd_jhj_top {
         line-height: 1
     }
-    .dsf_drtxc{
+
+    .dsf_drtxc {
         width: 60rpx;
     }
-    .dsf_derttx{
+
+    .dsf_derttx {
         position: absolute;
         right: 20rpx;
         top: 60rpx;
     }
+
 </style>

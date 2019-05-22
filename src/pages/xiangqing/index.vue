@@ -128,6 +128,7 @@
             xq_bottom
         },
         methods: {
+         
             async getdate() {
                 var sd_der = await this.wxpost("shopp/sp_list", {
                     id: 2,
