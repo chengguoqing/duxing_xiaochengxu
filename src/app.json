@@ -1,14 +1,23 @@
 {
-"pages": [
-        "pages/xiangqing/main",
-        "pages/order_formqueren/main",
-
-
-    "pages/adddz/main",
+    "pages": [
+          "pages/xiangqing/main",
+         "pages/xzshdz/main",
+          "pages/order_formqueren/main",
+     "pages/adddz/main",
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main"
   ],
+    "usingComponents": {
+        "van-field": "/vant/field/index",
+        "van-stepper": "/vant/stepper/index",
+        "van-submit-bar": "/vant/submit-bar/index",
+        "van-cell": "/vant/cell/index",
+        "van-cell-group": "/vant/cell-group/index",
+        "van-icon": "/vant/icon/index",
+        "van-button": "/vant/button/index"
+    },
+
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",

@@ -105,14 +105,23 @@
     </section>
     </view>
     
-    <xq_bottom></xq_bottom>
+<!--    <xq_bottom></xq_bottom>-->
+    
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+  <van-goods-action-icon icon="shop-o" text="店铺" />
+  <van-goods-action-button text="加入购物车" type="warning" />
+  <van-goods-action-button text="立即购买" @click="getcode"/>
+</van-goods-action>
+    
+    
     
 </div>
 </template>
 <script>
     import lunbo from "@/components/lunbo"
     import dianpu from "@/components/dianpu"
-    import xq_bottom from "@/components/xiangqing/bottom"
     export default {
         data() {
             return {
@@ -124,11 +133,31 @@
         },
         components: {
             lunbo,
-            dianpu,
-            xq_bottom
+            dianpu
         },
         methods: {
-         
+
+            getcode() {
+                var th = this
+                wx.login({
+                    success: function(code) {
+                        var code = code.code
+                        th.get_dfg(code)
+                    }
+
+                })
+
+            },
+            async get_dfg(code) {
+                var sd_der = await this.wxpost("comm/wx_load", {
+                    code: code
+                })
+                sd_der = JSON.parse(sd_der)
+                wx.setStorageSync('openid', sd_der.openid)
+                wx.navigateTo({
+                    url: '/pages/order_formqueren/main'
+                })
+            },
             async getdate() {
                 var sd_der = await this.wxpost("shopp/sp_list", {
                     id: 2,

@@ -1,6 +1,6 @@
 <template>
 	<div >
-	   <section class="sd_jhj_top pr" v-if="false">
+	   <navigator class="sd_jhj_top pr" v-if="false" url="/pages/adddz/main">
            <section class="cen" >
                 <section class="yj4 dfs_jh_ser">
     +新增收货地址
@@ -10,10 +10,10 @@
         
            
                <p class="hs_khsd"></p>
-        </section>
+        </navigator>
         
         
-        	   <navigator class="sd_jhj_top pr" url="/pages/adddz/main">
+        	   <navigator class="sd_jhj_top pr" url="/pages/xzshdz/main">
       
            <section  class="dsf_df_drtxd pd pt20 pr" >
             <p class="fl dsf_drtxc cen pt20">
@@ -55,28 +55,30 @@
             </section>
     
         </section>
-        <section class="mt20 bgff">
-                 <section class="dx_row pd">
-                <span class="df_drrtx fz28">购买数量:</span>
-                <section class="fr fz26 mt20 z9">
-                    <jiajian></jiajian>
-                </section>
-                <p class="qc"></p>
-            </section>
+        
+        <section class="mt20">
+        <van-cell-group >
+  <van-cell title="购买数量:">
+        <section class="">
+       <van-stepper  @change="onChange" />
+    </section>
+    </van-cell>
+    <van-cell title="配送方式:">
+            <section class=" fz26  z9">快递 共<span class="red">￥0.00</span></section>
+    </van-cell>
             
-            <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">配送方式:</span>
-                <section class="fr fz26 mt20 z9">快递 共<span class="red">￥0.00</span></section>
-                <p class="qc"></p>
-            </section>
-               <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">买家留言:</span>
-                <section class="ov pl20 fd_dert">
-                    <input placeholder="选填：给商家留言（45字以内）" class="fz28 ">
-                </section>
-                <p class="qc"></p>
-            </section>
+   <van-field
+    
+    clearable
+    label="买家留言:"
+    placeholder="选填：给商家留言（45字以内）"
+  />       
+            
+</van-cell-group>
+            
+               
         </section>
+      
         
         <section class="mt20 bgff  pt20">
                 <section class="box fz26 pd">
@@ -119,14 +121,14 @@
         
         </section>
         
-        <section class="sd_jh_drtt">
-                <section class="tjiao_ert cf cen fz30" @click="goumai">
-                提交订单
-            </section>
-            <section class="ov pr20 tr fz28">
-    	合计金额：<span class="red">￥268.00</span>
-            </section>
-        </section>
+        <van-submit-bar
+  :price="26800"
+  button-text="提交订单"
+  @submit="goumai"
+/>
+        
+        
+    
         
 
 	</div>
@@ -160,6 +162,9 @@
                 }
                 console.log(sd_der);
 
+            },
+            onChange(){
+                
             }
         },
         mounted() {
@@ -168,6 +173,13 @@
     }
 
 </script>
+<style>
+    .dasds_dert{
+        transform: scale(0.8);
+        right: -20rpx;
+        top: -10rpx;
+    }
+</style>
 <style scoped>
     .sd_jhj_top {
         height: 160rpx;

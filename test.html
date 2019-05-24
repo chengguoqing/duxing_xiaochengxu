@@ -1,0 +1,316 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>追加料</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    
+
+<script type="text/javascript">
+	var path = "/hslm_core";
+	var basePath = "http://192.168.1.105:8080/hslm_core/";
+	var img_url = "http://lm-img.oss-cn-shenzhen.aliyuncs.com/res/";
+</script>
+
+ <link href="http://192.168.1.105:8080/hslm_core/css/mui.min.css" rel="stylesheet" />
+ 
+     <link href="http://192.168.1.105:8080/hslm_core/css/mui.picker.min.css" rel="stylesheet" />
+ <link href="http://192.168.1.105:8080/hslm_core/css/base.css?v20180601" rel="stylesheet" />
+ <link href="http://192.168.1.105:8080/hslm_core/css/style.css?v20180602" rel="stylesheet" />
+ <link href="http://192.168.1.105:8080/hslm_core/css/iconfont.css" rel="stylesheet" />
+ <link href="http://192.168.1.105:8080/hslm_core/css/swiper3.07.min.css" rel="stylesheet" />
+ 
+ <script src="http://192.168.1.105:8080/hslm_core/js/jquery-1.11.3.min.js" type="text/javascript" ></script>
+ <script src="http://192.168.1.105:8080/hslm_core/js/mui.min.js"></script>
+  <script src="http://192.168.1.105:8080/hslm_core/js/mui.picker.min.js"></script>
+ <script src="http://192.168.1.105:8080/hslm_core/js/base.js?v20180813" type="text/javascript" ></script>
+   
+
+
+
+ 
+ <script type="text/javascript" src="http://192.168.1.105:8080/hslm_core/js/dist/lrz.bundle.js"/></script>
+</head>
+<body>
+
+    <section class="mt20">
+        <ul class="pl10 sdfsdf fz16">
+           
+            <li>
+               (必填一项)
+                <section class="pr10 mt10 pr dsfs_jh_derrt aa show">
+                    <textarea id="content" rows="5"></textarea>
+                   
+                </section>
+                <section class="pr10 mt10 pr dsfs_jh_derrt ab  mui-row">
+                    <section class="mui-col-xs-4 pr10 dsf_jh_dr_reet">
+                        <section class="sd_jhh_s yj4 br cen">
+                            <i class="dx icon-jia ls b fz26"></i>
+
+                            <input name="imgLogo" type="file" onchange="fileChange(this)" id="ssd_ooie"  multiple><br>
+                             <!-- <input type="hidden" name="img" id="img" /> -->
+                        </section>
+                    </section>
+                </section>
+
+                <section class="mt15">
+                   
+                    <section class="fd_jh_dertt  ab">
+                        <section class="yj4 br sd_j_deetrtxd">
+                            <i class="dx icon-tupian cz ye fz26"></i>
+
+                        </section>
+                        <p class="mt5">图片</p>
+                    </section>
+                    <p class="qc"></p>
+                </section>
+            </li>
+
+        </ul>
+    </section>
+    
+    <section class="btm pt20 pd">
+
+
+        <p class="mt20">
+            <button class="w100 fz16 bgls pt10 pm10 sclma_ser" >确认追加</button>
+        </p>
+    </section>
+
+    <section class="dsf_Jh_dfgf yj4">
+        <p class="cen mt30"><i class="dx icon-load cf fz40 dsdf_df_ert"></i></p>
+        <p class="cen cf mt10">处理中</p>
+    </section>
+    </body>
+<script type="text/javascript">
+$(function() {
+    $(".sjh_de_det").on("click", function() {
+        $(".sjh_de_det").removeClass("act")
+        $(this).addClass("act")
+    })
+    $(".dsf_jhg_der").on("click", function() {
+        $(".dsf_jhg_der").removeClass("act")
+        $(this).addClass("act")
+    })
+    $(".dfs_df_drtt,.kus_ser").on("click", function() {
+        $(".dsf_dertyx").toggleClass("show")
+    })
+
+    $(".fd_jh_dertt.aa").on("click", function() {
+        $(this).hide()
+        $(".dsfs_jh_derrt.aa").addClass("show")
+    })
+
+    $(".dsfs_jh_derrt.aa .closd_dert ").on("click", function() {
+        $(this).parent().removeClass("show")
+        $(".fd_jh_dertt.aa").show()
+    })
+
+    $(".fd_jh_dertt.ab").on("click", function() {
+        $("#ssd_ooie").click()
+        $(this).removeClass("show")
+
+    })
+    $("body").on("click", ".sder_jh_dert", function() {
+        $(this).parents(".df_jhh_deert").remove()
+        console.log($(".sder_jh_dert").length);
+        if ($(".sder_jh_dert").length <= 0) {
+              $(".dsfs_jh_derrt.ab").hide()
+        }
+    })
+    
+     var s_drer=false
+    $(".sclma_ser").on("click",function(){
+   	    if(s_drer){
+            return }
+    	var id = $('#id').val();//编号
+		//var content = $('#content').val();//内容
+		
+		var strContent = document.getElementById("content").value;  
+        //alert("处理前的strContent为\r\n"+strContent); 
+        var content=getFormatCode(strContent);//内容
+        //alert("转换之后的html代码为\r\n"+content); 
+/* 		var price = $('#xiugai_s').val();//价格
+		var old_price = $('#old_price').val();//价格 */
+		/* var img = $('#img').val();//图片 */
+		var img = []//图片
+		$(".sd_jh_dertx").map(function(a){
+			var src_dr=$(this).attr("data-src")
+			src_dr=src_dr.split(img_url)[1]
+			img.push(src_dr)
+		})
+		img=img.join(",");
+/* 		var time_expand = $('#time_expand').val();//顺延时间
+        if(time_expand==""){
+        	time_expand=0;}
+		var time_expand_ = $('#time_expand_').val();//原来的顺延时间
+		time_expand=parseInt(time_expand)+parseInt(time_expand_); */
+/*        if(content==""&&img==""){
+            mui.toast('请输入内容或图片'); return}  */
+/*         if(price==""){
+        	price='0';}
+	    var reg = /^(([1-9]\d{0,9}|0))(\.\d{1,2})?$/; 
+	    var r =price.match(reg);
+		if(r==null || r==""){
+			mui.toast("请输入正确的价格");return;}
+        if(price>5000){
+        	mui.alert('价格最多5000');
+            return } */
+        if(content==""&&img==""){
+            mui.toast('请输入内容或图片'); return} 
+        $(".dsf_Jh_dfgf").addClass("show")
+         s_drer=true;
+		$.ajax({
+			type : 'POST',
+			url : path+'/weixin/resource_update',
+			data :{
+				'id' : id,
+				'content' : content,
+				'img' : img
+/* 				'price' : price,
+				'old_price' : old_price,
+				'time_expand' : time_expand */
+			},
+			dataType : 'json',
+			success : function(result) {
+				$(".dsf_Jh_dfgf").removeClass("show");
+				s_drer=false;
+	            if (result.success) {
+	            	mui.alert(result.msg, '提示', function() {
+	            		window.location.href=basePath+"weixin/get_resource_detail?type=2&id="+result.data;
+	                });
+/* 	            	mui.alert(result.msg)
+	            	window.location.href=basePath+"weixin/get_resource_detail?type=2&id="+result.data; */
+				}else{
+					mui.alert(result.msg)}
+			},
+			error : function() {
+				s_drer=false;
+				$(".dsf_Jh_dfgf").removeClass("show");
+				 mui.alert("网络错误!")}
+		});
+    })
+    $(".sd_jh_dereert").on("click",function(){
+        $(".dsf_dertyx  ").removeClass("show")
+    })
+    
+    $(".xiugaisr").on("click",function(){
+        $("#xiugai_s").removeAttr("disabled").focus()
+        
+    })
+    $(".sd_kh_dert").on("click",function(){
+        $(".d_khj_deret").addClass("show")
+    })
+})
+
+//上传图片base64
+ var s_img=false
+function fileChange(that){ 
+	    if(s_img){
+	        return }
+		var files=that.files;
+		if(files.length<1){
+			return }
+		for (var i = 0;i<files.length;i++) {
+	        var filepath=files[i].name; 
+	        if(filepath==""){
+	        	return;}
+	        var extStart=filepath.lastIndexOf("."); 
+	        var txt=filepath.substring(extStart,filepath.length);
+	        var ext=filepath.substring(extStart,filepath.length).toUpperCase(); 
+	        if(".jpg|.png|.bmp|.jpeg".toUpperCase().indexOf(ext.toUpperCase())==-1){ 
+	           mui.alert("只允许上传jpg、png、bmp、jpeg格式的图片"); 
+	           return false; 
+	        }
+		}
+    	$(".dsf_Jh_dfgf").addClass("show")
+   	    s_img=true;
+    	var length=files.length;
+    	var res=0;
+    	for (var i = 0;i<files.length;i++) {
+    	       //以图片宽度为600进行压缩 
+    		   lrz(files[i], { 
+    		        width: 600 
+    		      }) 
+    		   .then(function (rst) { 
+    		           //压缩后上传 
+     		           $.ajax({ 
+    		           url : path+'/weixin/img_upload_base64',
+    		           type: "POST", 
+    		           data : { 
+    		           	   txt:txt,
+    		               imgdata:rst.base64//压缩后的base值 
+    		           }, 
+    		           dataType:"json", 
+    	/* 	           cache:false, 
+    		           async:false,  */
+    		            success : function(data) {
+    		        	     res++;
+    			             if(data.success){ 
+    			            	/*   alert(data.data);  */
+				       	        $(".dsfs_jh_derrt.ab").show()
+				       	        $(".dsf_jh_dr_reet").before('<section class="mui-col-xs-4 pr10 df_jhh_deert"> <section class="sd_jhh_s yj4 br cen pr"> <img src="' + rst.base64+ '" data-src="'+img_url+data.data+'" class="sd_jh_dertx"> <i class="dx sd_hjerer icon-guanbi  sder_jh_dert fz24 " style="color:#e0e0e0"></i> </section> </section>')
+			    		           if(res==length){
+			      		        	 $(".dsf_Jh_dfgf").removeClass("show");
+			    			        	 s_img=false; 
+			      		            }
+    			             }
+    		           }, 
+    		           error : function(){
+    		        	      res++; 
+    			        	 /*  mui.alert("服务中断或连接超时导致通信失败！"); */
+    	     		           if(res==length){
+    	      		        	 $(".dsf_Jh_dfgf").removeClass("show");
+    	    			        	 s_img=false; 
+    	      		            }
+    		                  }  }); 
+    		        }); 
+    	}
+}
+
+//上传图片
+/*  var s_img=false
+function previewFile(obj) {
+	if(s_img){
+        return }
+	var array = [ 'jpg', 'png', 'gif', 'jpeg' ];
+	if (!checkFileType(obj, array)) {
+		mui.alert("只支持上传jpg,png,gif,jpeg格式！");
+		return;
+	} else if (!checkFileSize(obj, 2)) {
+		mui.alert("图片大小不能超过2MB！");
+		return;
+	}
+	$(".dsf_Jh_dfgf").addClass("show")
+	s_img=true;
+  	 $.ajaxFileUpload({
+   		 url:path+'/weixin/img_upload',
+         secureuri:true,
+         fileElementId:'ssd_ooie',
+         dataType:'json',
+         success: function (data,status){
+        	 $(".dsf_Jh_dfgf").removeClass("show");
+        	 s_img=false;
+             if(data.success){
+                 if(data.success){ */
+               	  /*   alert(data.data);  */
+/*            	        $(".dsfs_jh_derrt.ab").show()
+           	        $(".dsf_jh_dr_reet").before('<section class="mui-col-xs-4 pr10 df_jhh_deert"> <section class="sd_jhh_s yj4 br cen pr"> <img src="' +img_url+data.data + '" class="sd_jh_dertx"> <i class="dx sd_hjerer icon-guanbi  sder_jh_dert fz24 " style="color:#e0e0e0"></i> </section> </section>')
+                }else{
+                	mui.alert("文件上传过程中出错!请重试!");
+                }
+             }else{
+            	 mui.alert("文件上传过程中出错!请重试!");
+             }
+         },
+         error: function (data,status,e){
+        	 $(".dsf_Jh_dfgf").removeClass("show");
+        	 s_img=false;
+             alert("服务中断或连接超时导致通信失败！");
+         }
+   	});
+} */
+</script>
+</html>

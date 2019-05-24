@@ -1,47 +1,67 @@
 <template>
 	<div >
-	
         <section class="dx_title pd  fz28 bgff btm" @tap="shoudsd">
             <i class="dx iconweixin khj_drert cz f_b fz40"></i><span class="ml10 fz28">获取微信收货地址</span>
             <i class="dx dsfd_df_drt iconyoujiantou"></i>
     </section>
 
         <section class="mt20 bgff">
-      <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">姓名:</span>
-                <section class="ov pl20 fd_dert">
-                    <input placeholder="收货人姓名" class="fz28 " v-model="form.userName" >
-                </section>
-                <p class="qc"></p>
-            </section>
-                  <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">电话:</span>
-                <section class="ov pl20 fd_dert">
-                    <input placeholder="收货人手机号" class="fz28 " type="number" v-model="form.telNumber" >
-                </section>
-                <p class="qc"></p>
-            </section>
-                  <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">地区:</span>
-                <section class="ov pl20 fd_dert">
-                      <picker
+        
+            <van-cell-group>
+  <van-field
+    required
+    clearable
+    v-model="form.userName"
+    label="姓名"
+    placeholder="收货人姓名"
+  />
+                
+      <van-field
+    required
+    clearable
+    type="number"
+    v-model="form.telNumber"
+    label="电话"
+    placeholder="收货人手机号"
+  />
+                
+       <picker
     mode="region" 
     @change="bindRegionChange"
   >
-                <span class="z9 fz28" v-if="!form.provinceName">选择省 / 市 / 区</span>
-                    <span v-else  class="z3 fz28">{{form.provinceName +"/"+form.cityName+"/"+form.countyName}}</span>
+       
+     <van-field
+    required
+    clearable
+    v-model="form.ssq_er" 
+    label="地区"
+     disabled
+    placeholder="选择省 / 市 / 区"
+ />
+          
+  </picker> 
                 
-    </picker>
-    </section>
-                <p class="qc"></p>
-            </section>
-                  <section class="dx_row pd btm">
-                <span class="df_drrtx fz28">详细地址:</span>
-                <section class="ov pl20 fd_dert">
-                    <textarea placeholder="街道门牌、楼层房间号等信息" class="fz28 dsf_df_dert" v-model="form.detailInfo"  />
-                </section>
-                <p class="qc"></p>
-            </section>
+                
+                
+                 <van-field
+                            class="dsf_drtttx"
+    type="textarea"
+    v-model="form.detailInfo"
+    label="详细地址"
+    :rows="4"
+   :autosize="true"
+    placeholder="请输入详细地址"
+  />
+   
+                
+                
+  
+</van-cell-group>
+            
+       
+                 
+   
+                 
     
         </section>
         <section class="mt40 pd">
@@ -60,6 +80,7 @@
                     provinceName: "",
                     cityName: "",
                     countyName: "",
+                    ssq_er:"",
                     detailInfo: ""
                 }
             }
@@ -73,6 +94,7 @@
                 wx.chooseAddress({
                     success(res) {
                         th.form = res
+                        th.form.ssq_er=th.form.provinceName+" / "+th.form.cityName+" / "+th.form.countyName
                     }
                 })
             }, 
@@ -81,6 +103,7 @@
                 this.form.provinceName=sd_drer[0]
                  this.form.cityName=sd_drer[1]
                   this.form.countyName=sd_drer[2]
+                this.form.ssq_er=sd_drer[0]+" / "+sd_drer[1]+" / "+sd_drer[2]
                 console.log();
             } 
         },
@@ -90,6 +113,11 @@
     }
 
 </script>
+<style>
+   .dsf_drtttx .van-field__input,   .dsf_drtttx textarea{
+        height: 200rpx !important
+    }
+</style>
 <style scoped>
     .dsf_df_dert {
         padding-left: 6rpx;
