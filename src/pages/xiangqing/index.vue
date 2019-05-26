@@ -1,5 +1,6 @@
 <template>
 <div class="dfd_dert">
+       
         <view  >
            
 <lunbo :lb_data="form.spt"></lunbo>
@@ -11,7 +12,7 @@
     <view class="pd pt10 pm10">
         <view class="pt10"> 
               <view class="fl mui-col-xs-9 fz26 red pt10">
-                    ￥ <text class=" fz40">{{form.jiage}}</text>
+                    ￥ <text class=" fz40">{{form.jiage}}</text> 
                 </view>
                 <view class="mui-col-xs-3 tr box cen">
                             <view class="box_a tr">
@@ -20,8 +21,8 @@
                                 </view>
                                     <view class="fz24 z6">收藏</view>
                             </view>
-                     <view class="box_a tr pr">
-                         <button class="ssd_deeert" open-type="share"></button>
+                     <view class="box_a tr pr" @click="show_deret=true">
+<!--                         <button class="ssd_deeert" open-type="share"></button>-->
                                     <view class="sd_ddfe">
                                     <i class="dx iconfenxiang fz40 z6 cz"></i>
                                 </view>
@@ -41,7 +42,7 @@
      快递:{{form.yunfei==0?'包邮':form.yunfei}}
                 </view>
                <view class="box_a">
- 总销59769笔
+ 总销59769笔 
                 </view>
                <view class="box_a tr">
 广东省 广州市
@@ -93,6 +94,7 @@
     
     </view>
     
+    
         <view class="bgff mt20">
                 <view class="pl20 fz28 df_jkj_dert pr10">
                         <view class="z3 pingjisdrt">
@@ -105,27 +107,64 @@
     </section>
     </view>
     
-<!--    <xq_bottom></xq_bottom>-->
     
 <van-goods-action>
-  <van-goods-action-icon icon="chat-o" text="客服" />
-  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+  <van-goods-action-icon icon="chat-o" text="客服" open-type="contact"/>
+  <van-goods-action-icon icon="cart-o" text="购物车" info="6" />
   <van-goods-action-icon icon="shop-o" text="店铺" />
-  <van-goods-action-button text="加入购物车" type="warning" />
-  <van-goods-action-button text="立即购买" @click="getcode"/>
+  <van-goods-action-button text="加入购物车" type="warning" @click="type_dd=1;show_er=true"/>
+  <van-goods-action-button text="立即购买" @click="type_dd=2;show_er=true"/>
 </van-goods-action>
     
+<!--    加载框-->
+<van-toast id="van-toast" />
+    
+
+        <van-popup :show="show_er" position="bottom" >
+            
+            <sku @close_sd="show_er=false" :type_dd="type_dd" :data="form"></sku>
+            
+          </van-popup>
+    <section  v-show="sd_dd_er">
+ <fxhb xq_id="2" ref="hbaodse" @clise_s="sd_dd_er=false"></fxhb>
+        </section>
+    
+<!--    分享下拉框-->
+    <van-action-sheet
+  :show="show_deret"
+  :actions="actions"
+cancel-text="取消"
+            @select="select"
+@close="show_deret=false"
+/>
     
     
-</div>
+</div> 
 </template>
 <script>
     import lunbo from "@/components/lunbo"
     import dianpu from "@/components/dianpu"
+    import Toast from '../../../vant/toast/toast';
+    import sku from "@/components/xiangqing/sku"
+    import fxhb from "@/components/xiangqing/fxhb"
     export default {
         data() {
             return {
+                actions: [{
+                        id: 1,
+                        name: '发送给朋友',
+                        openType: 'share'
+                    },
 
+                    {
+                        id: 2,
+                        name: '生成海报'
+                    }
+                ],
+                show_er: false,
+                sd_dd_er: false,
+                show_deret: false,
+                type_dd: 1, //1购物车 2立即购买
                 form: {
 
                 }
@@ -133,32 +172,31 @@
         },
         components: {
             lunbo,
-            dianpu
+            dianpu,
+            Toast,
+            sku,
+            fxhb
         },
         methods: {
-
-            getcode() {
-                var th = this
-                wx.login({
-                    success: function(code) {
-                        var code = code.code
-                        th.get_dfg(code)
-                    }
-
-                })
-
+            select(e) {
+                this.show_deret = false
+                if (e.target.id == 2) {
+                    this.shwo_hb()
+                }
             },
-            async get_dfg(code) {
-                var sd_der = await this.wxpost("comm/wx_load", {
-                    code: code
-                })
-                sd_der = JSON.parse(sd_der)
-                wx.setStorageSync('openid', sd_der.openid)
-                wx.navigateTo({
-                    url: '/pages/order_formqueren/main'
-                })
+
+            shwo_hb() {
+                this.sd_dd_er = true
+                this.$refs.hbaodse.jhgh_sdf()
             },
+
             async getdate() {
+                Toast.loading({
+                    mask: true,
+                    duration: 0,
+                    message: '加载中...'
+                });
+
                 var sd_der = await this.wxpost("shopp/sp_list", {
                     id: 2,
                     type: 3
@@ -167,19 +205,24 @@
                 this.sd_drtyx = JSON.parse(sd_der.sd_drtyx) || []
                 this.sku = JSON.parse(sd_der.sku) || []
                 this.form = sd_der
+                Toast.clear();
             },
         },
+
         onReady: function() {
             this.getdate()
         },
 
         onShareAppMessage: function() {
+            var sd_ddr = this.form.spt[0]
             return {
                 title: this.form.name,
                 desc: this.form.fxms,
-                path: '/pages/xiangqing?id=2'
+                imageUrl: sd_ddr,
+                path: '/pages/xiangqing/main?id=' + this.form.id
             }
         },
+
         mounted() {
 
         },
@@ -200,8 +243,23 @@
         opacity: 0
     }
 
+    .sdd_derett {
+        height: 500rpx;
+        width: 600rpx;
+        background: red;
+    }
+
 </style>
 <style scoped>
+    .asd_deert {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000
+    }
+
     .sd_ddfe {
         height: 46rpx;
         line-height: 46rpx;

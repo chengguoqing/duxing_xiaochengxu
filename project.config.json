@@ -7,7 +7,15 @@
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",

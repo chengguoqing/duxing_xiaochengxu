@@ -1,13 +1,16 @@
 <template>
-     <view class="swiper_xdfg ">
+     <view class="swiper_xdfg pr">
        
-    <swiper :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" circular="true" :indicator-active-color="active_color" :indicator-color="indicator">
+    <swiper  :autoplay="autoplay"  circular="true" @change="sw_change" :interval="interval">
       <block v-for="item in lb_data">
         <swiper-item>
           <image :src="item" class="slide-image" @click="fangda(item)"/>
         </swiper-item>
       </block>
-    </swiper>  
+    </swiper> 
+         <section class="sd_jh_dert">
+   {{dsd_dsdf}} / {{lb_data.length}}
+        </section>
   </view>
 </template>
 <script>
@@ -20,16 +23,19 @@
                 imgUrls: [ ], 
                 indicatorDots: true, //是否显示点点
                 autoplay: true, //自动播放
-                active_color: "#fff", //点选中的颜色 
-                indicator: "#B4B4B4", //点的颜色
                 interval: 10000,
                 duration: 200,
+                dsd_dsdf:1
+                
             }
         },
         components: {
 
         },
         methods: {
+            sw_change(e){
+                this.dsd_dsdf=e.target.current+1
+            },
             fangda(url) {
                 wx.previewImage({
                     current: url, // 当前显示图片的http链接
@@ -51,6 +57,16 @@
     .swiper_xdfg swiper {
         width: 100%;
         height: 100%;
+    }
+     .sd_jh_dert{
+        position: absolute;
+        right: 20rpx;
+        bottom: 20rpx;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        font-size: 24rpx;
+        border-radius: 20rpx;
+        padding: 5rpx 20rpx;
     }
 
 </style>

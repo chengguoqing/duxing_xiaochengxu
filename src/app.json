@@ -15,7 +15,12 @@
         "van-cell": "/vant/cell/index",
         "van-cell-group": "/vant/cell-group/index",
         "van-icon": "/vant/icon/index",
-        "van-button": "/vant/button/index"
+        "van-button": "/vant/button/index",
+        "van-toast": "/vant/toast/index",
+        "van-popup": "/vant/popup/index",
+        "van-row": "/vant/row/index",
+        "van-col": "/vant/col/index",
+        "van-action-sheet": "/vant/action-sheet/index"
     },
 
     "window": {

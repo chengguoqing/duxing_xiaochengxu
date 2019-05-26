@@ -1,5 +1,5 @@
 var url_d = "https://duxinggj.com/"
-//url_d ='http://192.168.0.62:8360/'
+//url_d ='http://192.168.1.102:8360/'
 import axios from "axios"
 var CryptoJS = require("crypto-js");
 var key = "duxinggongchengguoqingguangzoulg"
@@ -67,8 +67,6 @@ export default {
                     resolve(JSON.parse(decrypt))
 
                 }).catch(err => {
-                    console.log(sd_Df);
-                    console.log(444);
                     //                    if (sd_Df.data.code == 0) {
                     //                        th.$message.success(sd_Df.data.msg);
                     //                    }
