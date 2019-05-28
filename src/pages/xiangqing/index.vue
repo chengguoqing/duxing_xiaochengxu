@@ -134,8 +134,8 @@
   :show="show_deret"
   :actions="actions"
 cancel-text="取消"
-            @select="select"
-@close="show_deret=false"
+@select="select"
+@cancel="onClose"
 />
     
     
@@ -183,6 +183,9 @@ cancel-text="取消"
                 if (e.target.id == 2) {
                     this.shwo_hb()
                 }
+            },
+            onClose(){
+                this.show_deret = false 
             },
 
             shwo_hb() {

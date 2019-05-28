@@ -1,10 +1,13 @@
 {
     "pages": [
-          "pages/xiangqing/main",
-         "pages/xzshdz/main",
-          "pages/order_formqueren/main",
-     "pages/adddz/main",
-    "pages/index/main",
+         "pages/fenlei/main",
+        "pages/index/main",
+    "pages/xiangqing/main",
+    "pages/gwc/main",
+    "pages/user_center/main",
+    "pages/xzshdz/main",
+    "pages/order_formqueren/main",
+    "pages/adddz/main",
     "pages/logs/main",
     "pages/counter/main"
   ],
@@ -30,34 +33,33 @@
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
-        "color": "#999",
-        "backgroundColor": "#fafafa",
-        "selectedColor": "#333",
+        "backgroundColor": "#ffffff",
         "borderStyle": "white",
-
-        "list": [{
-            "text": "首页",
-            "pagePath": "pages/index/main",
-            "iconPath": "static/tabs/home.png",
-            "selectedIconPath": "static/tabs/home-active.png"
-    }, {
-            "text": "订单",
-            "pagePath": "pages/logs/main",
-            "iconPath": "static/tabs/orders.png",
-            "selectedIconPath": "static/tabs/orders-active.png"
-    }],
-
-        "items": [{
-            "name": "首页",
-            "pagePath": "pages/index/main",
-            "icon": "static/tabs/home.png",
-            "activeIcon": "static/tabs/home-active.png"
-    }, {
-            "name": "订单",
-            "pagePath": "pages/logs/main",
-            "icon": "static/tabs/orders.png",
-            "activeIcon": "static/tabs/orders-active.png"
-    }],
-        "position": "bottom"
+        "color": "#999999",
+        "selectedColor": "#FF4444",
+        "list": [
+            {
+                "pagePath": "pages/index/main",
+                "text": "首页",
+                "iconPath": "static/images/bottm/dsfsd_a_a.png",
+                "selectedIconPath": "static/images/bottm/dsfsd_b_a.png"
+      }, {
+                "pagePath": "pages/fenlei/main",
+                "text": "分类",
+                "iconPath": "static/images/bottm/dsfsd_a_b.png",
+                "selectedIconPath": "static/images/bottm/dsfsd_b_b.png"
+      }, {
+                "pagePath": "pages/gwc/main",
+                "text": "购物车",
+                "iconPath": "static/images/bottm/dsfsd_a_c.png",
+                "selectedIconPath": "static/images/bottm/dsfsd_b_c.png"
+      },
+            {
+                "pagePath": "pages/user_center/main",
+                "text": "我的",
+                "iconPath": "static/images/bottm/dsfsd_a_d.png",
+                "selectedIconPath": "static/images/bottm/dsfsd_b_d.png"
+      }
+    ]
     }
 }
