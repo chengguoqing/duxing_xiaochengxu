@@ -1,9 +1,10 @@
 {
     "pages": [
+         "pages/gwc/main",
          "pages/fenlei/main",
         "pages/index/main",
     "pages/xiangqing/main",
-    "pages/gwc/main",
+
     "pages/user_center/main",
     "pages/xzshdz/main",
     "pages/order_formqueren/main",
@@ -23,7 +24,10 @@
         "van-popup": "/vant/popup/index",
         "van-row": "/vant/row/index",
         "van-col": "/vant/col/index",
-        "van-action-sheet": "/vant/action-sheet/index"
+        "van-action-sheet": "/vant/action-sheet/index",
+        "van-checkbox": "/vant/checkbox/index",
+        "van-checkbox-group": "/vant/checkbox-group/index",
+        "van-swipe-cell": "/vant/swipe-cell/index"
     },
 
     "window": {

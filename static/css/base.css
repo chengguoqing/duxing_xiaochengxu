@@ -1069,3 +1069,44 @@ a:hover {
     position: relative;
     bottom: 5rpx;
 }
+
+
+
+
+
+.ssd_jhj_der{
+        height: 100vh
+    }
+    .sd_j_dh_d{
+        width: 170rpx;
+        float: left;
+        height: 100%;
+        background: #F8F8F8
+    }
+    .dsf_jh_dert{
+        font-size: 28rpx;
+        color: #666;
+        line-height: 80rpx;
+        text-align: center
+    }
+    .sd_jHJ_der{
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 4rpx;
+        background: #FF4444;
+        display: none
+    }
+    .dsf_jh_dert.act .sd_jHJ_der{
+        display:block
+    }
+     .dsf_jh_dert.act{
+        color: #333;
+         background: #fff
+    }
+    .sf_sd_a_eer{
+        width: 180rpx;
+        height: 180rpx;
+    }
